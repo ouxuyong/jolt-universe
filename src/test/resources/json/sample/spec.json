@@ -1,0 +1,23 @@
+[{
+    "operation": "shift",
+    "spec": {
+        "orderId": "data.order_id",
+        "orderNo": "data.order_no",
+        "orderItem": {
+            "*": {
+                "orderItemId": "data.order_item.[#2].order_item_id",
+                "orderItemNo": "data.order_item.[#2].order_item_no"
+            }
+        }
+    }
+},
+    {
+        "operation": "default",
+        "spec": {
+            "Range": 5,
+            "data": {
+                "default": 12345
+            }
+        }
+    }
+]

@@ -1,0 +1,12 @@
+{
+    "orderId": 1212,
+    "orderNo":"202223434343",
+    "goods": {
+        "goodsId": 123,
+        "goodsName": "test_goods"
+    },
+    "orderItem": [{
+        "orderItemId": 1324,
+        "orderItemNo": "34535345"
+    }]
+}

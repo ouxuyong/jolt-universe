@@ -1,0 +1,32 @@
+{
+  "input": {
+      "orderId": 1212,
+      "orderNo":"202223434343",
+      "orderItem": [{
+        "id": 1324,
+        "no": "34535345"
+      }]
+    },
+
+  "spec": [{
+    "operation": "shift",
+    "spec": {
+      "orderId": "data.order_id",
+      "orderNo": "data.order_no",
+      "orderItem": "data.order_item"
+    }
+  }
+  ],
+
+  "expected": {
+    "data" : {
+      "order_id" : 1212,
+      "order_no" : "202223434343",
+      "order_item" : [ {
+        "id" : 1324,
+        "no" : "34535345"
+      } ]
+    }
+  }
+
+}
