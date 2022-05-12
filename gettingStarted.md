@@ -22,7 +22,7 @@ latest.jolt.version 目前最新的版本为0.1.6 具体的版本号可以查看
 
 ###  以下是具体的demo JoltSample.java
 
-演示demo  [地址](https://github.com/ouxuyong/jolt-universe/src/test/java/com/example/demo/shift/ShiftTest.java).
+演示demo  [地址](https://github.com/ouxuyong/jolt-universe/blob/master/src/test/java/com/example/demo/shift/ShiftTest.java).
 
 ``` java
 package com.example.demo.shift;
@@ -51,7 +51,7 @@ public class ShiftTest {
 ```
 
 ### /json/sample/input.json
-数据json文件 [地址](https://github.com/ouxuyong/jolt-universe/src/test/resources/json/sample/input.json).
+数据json文件 [地址](https://github.com/ouxuyong/jolt-universe/blob/master/src/test/resources/json/sample/input.json).
 
 ``` json
 {
@@ -69,7 +69,7 @@ public class ShiftTest {
 ```
 
 ### /json/sample/spec.json
-表达式json文件 [地址](https://github.com/ouxuyong/jolt-universe/src/test/resources/json/sample/spec.json).
+表达式json文件 [地址](https://github.com/ouxuyong/jolt-universe/blob/master/src/test/resources/json/sample/spec.json).
 
 ``` json
 [{
@@ -97,9 +97,8 @@ public class ShiftTest {
 ]
 ```
 
-### Output
 
-输出结果:
+### 输出结果:
 
 ``` json
 {
