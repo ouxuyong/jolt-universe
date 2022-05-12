@@ -1,5 +1,7 @@
 # 这是一个jolt 使用教程的项目
 jolt传送门  [官网地址](https://github.com/bazaarvoice/jolt).
+本项目会持续更新，为大家带来更全、更好的jolt用法教程，如果大家有什么疑问，或者有什么需要转换json，可以在issues 中注明 input（输出），和Output（输出），
+大家可以一起探讨交流。
 
 # 目录
    1. [在线调试工具](#demo)
@@ -29,4 +31,5 @@ modify-define-beta:当键值不存在时写入
 ```
 上面的前5种类型都只对json的结构进行转换，如果需要对数据进行操作则需要用到modify等相关操作
 这里也给大家推荐一下，同样分享jolt的博主 [Panda诚博客 传送门](https://zhangchengk.gitee.io/jolt/JsonJolt%E6%95%99%E7%A8%8B/#%E6%A6%82%E8%A7%88).
+下面我会给大家详细说明以上不同模式的用法和一些样例。
 
