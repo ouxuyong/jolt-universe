@@ -20,7 +20,7 @@ Maven Dependency to Add to your pom file
 latest.jolt.version 目前最新的版本为0.1.6 具体的版本号可以查看这里 [jolt历史版本](https://github.com/bazaarvoice/jolt/releases).
 
 
-###  以下是具体的demo JoltSample.java
+###  以下是具体的demo ShiftTest.java
 
 演示demo  [地址](https://github.com/ouxuyong/jolt-universe/blob/master/src/test/java/com/example/demo/shift/ShiftTest.java).
 
