@@ -1,4 +1,5 @@
 # shift相关案例讲解
+shift 模式的作用的将一个input 的json 转成 expected的json,只改变数据结构，不对数据进行操作
 #### 简单的格式转换
 input 输入:
 ```json

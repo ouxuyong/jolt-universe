@@ -35,4 +35,7 @@ modify-define-beta:当键值不存在时写入
 下面我会给大家详细说明以上不同模式的用法和一些样例。  
 shift模式的详细例子 [shift explain](src/test/resources/docs/shift/shift.md).  
 default 模式的详细例子 [default explain](src/test/resources/docs/default/default.md).  
+remove 模式的详细例子 [remove explain](src/test/resources/docs/remove/remove.md).  
+cardinality 模式的详细例子 [cardinality explain](src/test/resources/docs/cardinality/cardinality.md).  
+modify 模式的详细例子[modify explain](src/test/resources/docs/modify/modify.md).  
 不同模式结合使用的案例[combine explain](src/test/resources/docs/combine/combine.md).  

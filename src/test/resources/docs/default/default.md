@@ -1,4 +1,5 @@
 # default相关案例讲解
+default 的作用是给json赋默认值，如果对应的key不存在或值为null时，给其赋上默认值
 #### 简单的赋默认值
 input 输入:
 ```json
