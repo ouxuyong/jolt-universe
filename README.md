@@ -33,6 +33,6 @@ modify-define-beta:当键值不存在时写入
 上面的前5种类型都只对json的结构进行转换，如果需要对数据进行操作则需要用到modify等相关操作
 这里也给大家推荐一下，同样分享jolt的博主 [Panda诚博客 传送门](https://zhangchengk.gitee.io/jolt/JsonJolt%E6%95%99%E7%A8%8B/#%E6%A6%82%E8%A7%88).
 下面我会给大家详细说明以上不同模式的用法和一些样例。  
-shift模式的详细例子 [shift explain](src/test/resources/docs/shift/shift.md).
-default 模式的详细例子 [default explain](src/test/resources/docs/default/default.md).
-不同模式结合使用的案例[combine explain](src/test/resources/docs/combine/combine.md).
+shift模式的详细例子 [shift explain](src/test/resources/docs/shift/shift.md).  
+default 模式的详细例子 [default explain](src/test/resources/docs/default/default.md).  
+不同模式结合使用的案例[combine explain](src/test/resources/docs/combine/combine.md).  
