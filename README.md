@@ -14,7 +14,7 @@ jolt传送门  [官网地址](https://github.com/bazaarvoice/jolt).
 
 ##  <a name="demo"></a> 在线调试工具
 在线调试工具 [传送门地址](http://jolt-demo.appspot.com/).
-你可以将json数据和jolt表达式在上面运行，由于这个在线工具是托管在 Google App Engine 上面的，国内的网络可能无法访问
+你可以将json数据和jolt表达式在上面运行，由于这个在线工具是托管在 Google App Engine 上面的
 ![image](https://user-images.githubusercontent.com/57780019/168436337-7f7cc9f5-0a32-4103-88d0-b7283b9e40cb.png)
 
 
