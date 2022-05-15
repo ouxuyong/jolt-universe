@@ -131,3 +131,202 @@ jolt 表达式,这里给大家演示两种方式
 // &1 和 &（1,0）匹配到的是 “root”，这个后面我们的源码中会讲解
 
 ```
+#### shift模式中数组的转换和 ‘#’的使用  
+'#'的作用通常是用来转换数组的，下面我们用具体的例子讲解
+input 输入:  
+```json
+{
+	"orderId": 1212,
+	"orderNo": "202223434343",
+	"orderItem": [{
+			"orderItemId": 1,
+			"orderItemNo": "2022xxxxxx01",
+			"goods": [{
+					"goodsId": 1,
+					"goodsNum": 5
+				},
+				{
+					"goodsId": 2,
+					"goodsNum": 6
+				}
+			]
+		},
+		{
+			"orderItemId": 2,
+			"orderItemNo": "2022xxxxxx02",
+			"goods": [{
+					"goodsId": 3,
+					"goodsNum": 6
+				},
+				{
+					"goodsId": 4,
+					"goodsNum": 7
+				}
+			]
+		}
+	]
+}
+```  
+shift :  
+```json
+[{
+	"operation": "shift",
+	"spec": {
+		"orderId": "o_id",
+		"orderNo": "o_no",
+		"orderItem": {
+			"*": { // '*' 匹配的是orderItem数组的下标
+				"orderItemId": "o_item.[#2].o_item_id", // #2代表的是从orderItemId往上数的第二个key,也就是'orderItem',这就代表着 o_item数组对标 输入的 orderItem
+				"orderItemNo": "o_item.[#2].o_item_no",
+				"goods": {
+					"*": {
+						"goodsId": "o_item.[#4].o_goods.[#2].g_id", // 这里类似 [#4] 往上数4就是'orderItem'，[#2]就是 'goods'
+						"goodsNum": "o_item.[#4].o_goods.[#2].g_num"
+					}
+				}
+			}
+		}
+	}
+}]
+```   
+输出：  
+```json
+{
+    "o_id": 1212,
+    "o_no": "202223434343",
+    "o_item": [
+        {
+            "o_item_id": 1,
+            "o_item_no": "2022xxxxxx01",
+            "o_goods": [
+                {
+                    "g_id": 1,
+                    "g_num": 5
+                },
+                {
+                    "g_id": 2,
+                    "g_num": 6
+                }
+            ]
+        },
+        {
+            "o_item_id": 2,
+            "o_item_no": "2022xxxxxx02",
+            "o_goods": [
+                {
+                    "g_id": 3,
+                    "g_num": 6
+                },
+                {
+                    "g_id": 4,
+                    "g_num": 7
+                }
+            ]
+        }
+    ]
+}
+```  
+如果输入的json 是一个数组要怎么转换呢，请看下面的例子  
+input 输入: 
+```json
+[
+    {
+        "orderItemId": 1,
+        "orderItemNo": "2022xxxxxx01"
+    },
+    {
+        "orderItemId": 2,
+        "orderItemNo": "2022xxxxxx02"
+    }
+]
+```  
+预期输出：  
+```json
+[ {
+  "orderId" : 1,
+  "orderNo" : "2022xxxxxx01"
+}, {
+  "orderId" : 2,
+  "orderNo" : "2022xxxxxx02"
+} ]
+
+```   
+spec 表达式：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "*": {
+        "orderItemId": "[#2].orderId",
+        "orderItemNo": "[#2].orderNo"
+      }
+    }
+  }
+]
+```   
+其实除了使用‘#’进行数组的转换，还可以使用“&”来实现，比如上文的转换，也可以使用如下表达式   
+spec 表达式：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "*": {
+        "orderItemId": "[&1].orderId",
+        "orderItemNo": "[&1].orderNo"
+      }
+    }
+  }
+]
+```   
+‘&’转换数组和‘#’的区别在于[]里面的数值,‘&’ 比‘#’小1，  
+[&]对应的是下标,如上文 * 匹配的是下标 0或 1，[&1]只的就是对应的下标0或1 
+[#]要对应的是上层的key，如上文，[#2]对应的是key 'root',有小伙伴就会产生疑问这个‘root’是哪来的，input里面没有呀，别着急后续我们会在源码篇详细讲解  
+
+#### shift模式中 ‘$’的使用
+'$'的作用是将input中的key当做值，映射给输出的json key中，请看下面的例子  
+input 输入:  
+```json
+{
+  "rating": {
+    "primary": {
+      "value": 3
+    },
+    "quality": {
+      "value": 3
+    }
+  }
+}
+```  
+spec：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "rating": {
+        "primary": {
+          "value": "Rating",
+          "max": "RatingRange"
+        },
+        "*": { //"*"匹配的是 quality
+          "$": "SecondaryRatings.Id" //"$"的意思是将“*”匹配的key 当做值赋值给 SecondaryRatings.Id
+        }
+      }
+    }
+  }
+]
+
+```   
+输出：  
+```json
+{
+  "Rating" : 3,
+  "SecondaryRatings" : {
+    "Id" : "quality"
+  }
+}
+```
+
+
