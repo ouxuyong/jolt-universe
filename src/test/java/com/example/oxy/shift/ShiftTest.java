@@ -1,4 +1,4 @@
-package com.example.demo.shift;
+package com.example.oxy.shift;
 
 import com.bazaarvoice.jolt.Chainr;
 import com.bazaarvoice.jolt.JsonUtils;

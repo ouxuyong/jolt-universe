@@ -280,6 +280,44 @@ spec 表达式：
   }
 ]
 ```   
+shift 模式也支持取出指定下标的元素  
+```json
+{
+  "order": [
+    {
+      "orderItemId": 1,
+      "orderItemNo": "2022xxxxxx01"
+    },
+    {
+      "orderItemId": 2,
+      "orderItemNo": "2022xxxxxx02"
+    }
+  ]
+}
+```  
+取出下标为0的元素 spec：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "order": {
+        "0": "order"
+      }
+    }
+  }
+]
+```  
+输出结果：  
+```json
+{
+  "order" : {
+    "orderItemId" : 1,
+    "orderItemNo" : "2022xxxxxx01"
+  }
+}
+```
+
 ‘&’转换数组和‘#’的区别在于[]里面的数值,‘&’ 比‘#’小1，  
 [&]对应的是下标,如上文 * 匹配的是下标 0或 1，[&1]只的就是对应的下标0或1 
 [#]要对应的是上层的key，如上文，[#2]对应的是key 'root',有小伙伴就会产生疑问这个‘root’是哪来的，input里面没有呀，别着急后续我们会在源码篇详细讲解   
@@ -313,7 +351,72 @@ spec:
   "primary" : "1234"
 }
 ```   
-基于上面的用法比较常用的转换就是枚举值的转换
+基于上面的用法比较常用的转换就是枚举值的转换  
+假设我们这这样一个例子，输出一个sex 字段，1代表男，2代表女，我们需要把这个字段转换成SexEnum枚举类  
+
+```java
+package com.example.oxy.enums;
+import lombok.Getter;
+
+/**
+ * 性别枚举类
+ * @author oxy
+ */
+public enum SexEnum {
+    MAN("男", "man"),
+    WOMAN("女", "woman");
+
+    @Getter
+    private String desc;
+
+    @Getter
+    private String code;
+
+    SexEnum(String desc, String code) {
+        this.desc = desc;
+        this.code = code;
+    }
+}
+
+```   
+input 输入:  
+```json
+{
+  "name": "张三",
+  "sex": 1
+}
+```  
+shift:
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "name": "name",
+      "sex": {
+        "1": { //如果sex =1 ,将其转成男性枚举值
+          "#男": "sex.desc",
+          "#man": "sex.code"
+        },
+        "2": { //如果sex =2 ,将其转成女性枚举值
+          "#女": "sex.desc",
+          "#woman": "sex.code"
+        }
+      }
+    }
+  }
+]
+
+```
+```json
+{
+  "name" : "张三",
+  "sex" : {
+    "desc" : "男",
+    "code" : "man"
+  }
+}
+```
 
 #### shift模式中 ‘$’的使用
 '$'的作用是将input中的key当做值，映射给输出的json key中，请看下面的例子  

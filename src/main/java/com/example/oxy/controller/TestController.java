@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.oxy.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

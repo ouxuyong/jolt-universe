@@ -22,10 +22,10 @@ latest.jolt.version 目前最新的版本为0.1.6 具体的版本号可以查看
 
 ###  以下是具体的demo ShiftTest.java
 
-演示demo  [地址](src/test/java/com/example/demo/shift/ShiftTest.java).
+演示demo  [地址](src/test/java/com/example/oxy/shift/ShiftTest.java).
 
 ``` java
-package com.example.demo.shift;
+package com.example.oxy.shift;
 
 import com.bazaarvoice.jolt.Chainr;
 import com.bazaarvoice.jolt.JsonUtils;
