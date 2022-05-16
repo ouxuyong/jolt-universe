@@ -29,7 +29,7 @@ input 输入:
    
  ```
 spec ：
-```
+```json
 [
   {
     "operation": "cardinality",
