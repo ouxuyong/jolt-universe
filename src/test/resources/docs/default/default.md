@@ -32,7 +32,7 @@ input 输入:
 }
   ```
  jolt简单的表达式如下：
- ```
+ ```json
 [
   {
     "operation": "default",
