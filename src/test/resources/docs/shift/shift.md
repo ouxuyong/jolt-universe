@@ -26,7 +26,7 @@ input 输入:
       
   ```
  jolt简单的表达式如下：
- ```
+ ```json
 [
   {
     "operation": "shift",
@@ -103,7 +103,7 @@ expected 预期输出:
 }
 ```
 jolt 表达式,这里给大家演示两种方式
-```text
+```json
 //方式1： 
 [
   {
