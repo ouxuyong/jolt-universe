@@ -136,35 +136,38 @@ jolt 表达式,这里给大家演示两种方式
 input 输入:  
 ```json
 {
-	"orderId": 1212,
-	"orderNo": "202223434343",
-	"orderItem": [{
-			"orderItemId": 1,
-			"orderItemNo": "2022xxxxxx01",
-			"goods": [{
-					"goodsId": 1,
-					"goodsNum": 5
-				},
-				{
-					"goodsId": 2,
-					"goodsNum": 6
-				}
-			]
-		},
-		{
-			"orderItemId": 2,
-			"orderItemNo": "2022xxxxxx02",
-			"goods": [{
-					"goodsId": 3,
-					"goodsNum": 6
-				},
-				{
-					"goodsId": 4,
-					"goodsNum": 7
-				}
-			]
-		}
-	]
+    "orderId": 1212,
+    "orderNo": "202223434343",
+    "orderItem": [
+        {
+            "orderItemId": 1,
+            "orderItemNo": "2022xxxxxx01",
+            "goods": [
+                {
+                    "goodsId": 1,
+                    "goodsNum": 5
+                },
+                {
+                    "goodsId": 2,
+                    "goodsNum": 6
+                }
+            ]
+        },
+        {
+            "orderItemId": 2,
+            "orderItemNo": "2022xxxxxx02",
+            "goods": [
+                {
+                    "goodsId": 3,
+                    "goodsNum": 6
+                },
+                {
+                    "goodsId": 4,
+                    "goodsNum": 7
+                }
+            ]
+        }
+    ]
 }
 ```  
 shift :  
