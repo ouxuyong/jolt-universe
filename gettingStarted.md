@@ -40,8 +40,9 @@ public class ShiftTest {
      */
     @Test
     public void testDemo() {
-
+       //将json字符串转成object 类型对象
         Object input = JsonUtils.classpathToObject("/json/sample/input.json");
+        //将json字符串转成List 类型对象
         List spec = JsonUtils.classpathToList("/json/sample/spec.json");
         Chainr chainr = Chainr.fromSpec(spec);
         Object transform = chainr.transform(input);
