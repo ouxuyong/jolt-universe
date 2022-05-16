@@ -19,7 +19,7 @@ input 输入:
    
  ```
   spec ：
-```
+```json
 [
   {
     "operation": "remove",
