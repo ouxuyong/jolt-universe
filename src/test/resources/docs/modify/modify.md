@@ -69,7 +69,9 @@ input 输入:
 {
   "rating": {
     "primary": {
-      "value": 3
+      "value": 3,
+      "value1": "ABC",
+      "value2": "dnf"
     },
     "quality": {
       "value": 3
@@ -85,7 +87,20 @@ spec ：
     "spec": {
       "rating": {
         "primary": {
-          "value": "=toString" //将 value转成字符串
+          "value": "=toString", //将 value转成字符串
+          "value1": "=toLower", //将value1的字符变成小写
+          "value2": "=toUpper", //将value2的字符变成大写
+          "value3": "=concat(a,b,c,d,e,c,g)", //将括号里的数值拼成字符串
+          "value4": "=join('_',5,4,5,6,7,8,9,90,0)", // 以‘—’将后面的元素连接在一起
+          "value5": "=split('_','order_item_info')", //以‘_’分割字符串
+          "value6": "=substring('abcdefg',3,3)", //截取‘abcdefg’的子串
+          "value7": "=trim", // 去除 ‘ yy ’ 前后空格
+          "value8": "=leftPad('abc',5,c)", // 5 - 'abc'.length()等于2，所在在左边增加两个c
+          "value9": "=rightPad('abc',5,d)" // 5 - 'abc'.length()等于2，所在在右边增加两个d
+        },
+        "quality": {
+          "value1": "=min(1,3,4,6)", // 从 1,3,4,6中选最小值赋值给value1
+          "value2": "=max(1,3,4,6)" // 从 1,3,4,6中选最大值赋值给value2
         }
       }
     }
@@ -97,10 +112,20 @@ expected 预期输出：
 {
   "rating" : {
     "primary" : {
-      "value" : "3"
+      "value" : "3",
+      "value1" : "abc",
+      "value2" : "DNF",
+      "value7" : "yy",
+      "value3" : "abcdecg",
+      "value4" : "5_4_5_6_7_8_9_90_0",
+      "value5" : [ "order", "item", "info" ],
+      "value8" : "ccabc",
+      "value9" : "abcdd"
     },
     "quality" : {
-      "value" : 3
+      "value" : 3,
+      "value1" : 1,
+      "value2" : 6
     }
   }
 }
