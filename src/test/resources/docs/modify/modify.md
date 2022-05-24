@@ -64,6 +64,7 @@ concat ：合并字符串
 
 
 ## modify-overwrite-beta相关案例讲解  
+#### 字符串相关处理
 input 输入:
 ```json
 {
@@ -107,7 +108,7 @@ spec ：
   }
 ]
  ```  
-expected 预期输出：
+expected 输出：
    ```json
 {
   "rating" : {
@@ -129,4 +130,183 @@ expected 预期输出：
     }
   }
 }
-  ```
+  ```  
+  #### 数学运算  
+  input 输入:
+```json
+{
+  "rating": {
+    "primary": {
+      "value": 3
+    },
+    "quality": {
+      "value": 3
+    }
+  }
+}
+```  
+spec ：
+```json
+[
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "rating": {
+        "quality": {
+          "value1": "=min(1,3,4,6)", // 从 1,3,4,6中选最小值赋值给value1
+          "value2": "=max(1,3,4,6)", // 从 1,3,4,6中选最大值赋值给value2
+          "value3": "=abs(-100)", //取一个数据的绝对值
+          "value4": "=avg(1,2,3)", // 取 1,2,3 的平均值
+          "value5": "=intSum(1,2,3)", // int求和
+          "value6": "=doubleSum(1.0,2.0,3.0)", // double求和
+          "value7": "=longSum(10000,20000,30000)", //long求和
+          "value8": "=intSubtract(6,2)", //整数减法 6-2
+          "value9": "=doubleSubtract(6.0,2.2)", //浮点数减法6.0 - 2.2
+          "value10": "=divide(10,2)", //除法 10/2
+          "value11": "=divideAndRound(2,30,7)" //除法 30/7四舍五入，第一个2参数指的是保留几位小数
+        }
+      }
+    }
+  }
+]
+ ```  
+expected 输出：
+   ```json
+{
+  "rating" : {
+    "primary" : {
+      "value" : 3
+    },
+    "quality" : {
+      "value" : 3,
+      "value1" : 1,
+      "value2" : 6,
+      "value3" : 100,
+      "value4" : 2.0,
+      "value5" : 6,
+      "value6" : 6.0,
+      "value7" : 60000,
+      "value8" : 4,
+      "value9" : 3.8,
+      "value10" : 5.0,
+      "value11" : 4.29
+    }
+  }
+}
+
+  ```  
+  #### 类型转换  
+ input 输入:
+```json
+{
+  "rating": {
+    "primary": {
+      "value1": "3",
+      "value2": 2,
+      "value3": "33",
+      "value4": "false",
+      "value5": 1999,
+      "value6": "123456789"
+    }
+  }
+}
+```  
+spec ：
+```json
+[
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "rating": {
+        "primary": {
+          "value1": "=toInteger", // 转换成int类型
+          "value2": "=toDouble", // 转换成Double类型
+          "value3": "=toLong", //转换成long类型
+          "value4": "=toBoolean", //转换成Boolean类型
+          "value5": "=toString", // 转换成String类型
+          "value6": "=size", // 求字符串长度
+          "value7": "=size(1,2,3,4,5,6,7,8)" //求数组元素个数
+        }
+      }
+    }
+  }
+]
+ ```  
+expected 输出：
+   ```json
+{
+  "rating" : {
+    "primary" : {
+      "value1" : 3,
+      "value2" : 2.0,
+      "value3" : 33,
+      "value4" : false,
+      "value5" : "1999",
+      "value6" : 9,
+      "value7" : 8
+    }
+  }
+}
+
+  ```    
+  
+ #### 数组的操作  
+ 
+   input 输入:
+```json
+{
+  "rating": {
+    "primary": {
+      "value0":[6,5,4,3,2,1],
+      "value1": [ "a", null, 1, null, "b" ],
+      "value2": [ "a", null, { "x": "X", "y": null, "zList" : [ "z1", null, "z3" ] }, null, "b"  ],
+      "value3": [ "abc", "abc", "xyz", "cde", "bcd" ],
+      "value4": [ "abc", "abc", "xyz", "cde", "bcd" ],
+      "value5": [ "abc", "abc", "xyz", "cde", "bcd" ],
+      "value6": [ "abc", "abc", "xyz", "cde", "bcd" ]
+      
+    }
+  }
+}
+```  
+spec ：
+```json
+[
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "rating": {
+        "primary": {
+          "value1": "=squashNulls", // 去除空值
+          "value2": "=recursivelySquashNulls", // 递归去除空值
+          "value3": "=squashDuplicates", //去除重复值
+          "value4": "=firstElement", //取数组第一个值
+          "value5": "=lastElement", // 取数组最后一个值
+          "value6": "=elementAt(2,@(1,value0))", // 取value0数组下标为2的值
+          "value7": "=toList(10)", //将元素转换数组
+          "value8": "=sort(@(1,value0))" //将value0升序排序
+        }
+      }
+    }
+  }
+]
+ ```  
+expected 输出：
+   ```json
+{
+  "rating" : {
+    "primary" : {
+      "value0" : [ 6, 5, 4, 3, 2, 1 ],
+      "value1" : [ "a", 1, "b" ],
+      "value2" : [ "a",  {"x" : "X","zList" : [ "z1", "z3" ] }, "b" ],
+      "value3" : [  "abc", "xyz", "cde", "bcd" ],
+      "value4" : "abc",
+      "value5" : "bcd",
+      "value6" : 4,
+      "value7" : [ 10 ],
+      "value8" : [ 1, 2, 3, 4, 5, 6 ]
+    }
+  }
+}
+
+  ```    
