@@ -23,7 +23,7 @@ You can run json data and jolt expressions on it, this online tool is hosted on 
 
 
 ## <a name="getting_started"></a> getting started  
-Getting Started Tutorial Documentation Address [gettingStarted](gettingStarted.md).
+Getting Started Tutorial Documentation Address [gettingStarted](EnglishGettingStarted.md).
 ## <a name="jolt_type"></a> Different modes and usage of jolt
 ```
 shift       : Copy input json to output json  
