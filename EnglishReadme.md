@@ -43,8 +43,8 @@ The first five types above only convert the structure of json. If you need to op
 
 Below I will give you a detailed explanation of the usage of the above different modes and some examples.  
 Detailed example of shift mode  [shift explain](src/test/resources/docs/shift/EnglishShift.md).  
-Detailed example of default mode  [default explain](src/test/resources/docs/default/default.md).  
-Detailed example of remove mode  [remove explain](src/test/resources/docs/remove/remove.md).  
-Detailed example of cardinality mode  [cardinality explain](src/test/resources/docs/cardinality/cardinality.md).  
-Detailed example of modify mode [modify explain](src/test/resources/docs/modify/modify.md).  
-Cases where different modes are used in combination [combine explain](src/test/resources/docs/combine/combine.md).  
+Detailed example of default mode  [default explain](src/test/resources/docs/default/EnglishDefault.md).  
+Detailed example of remove mode  [remove explain](src/test/resources/docs/remove/EnglishRemove.md).  
+Detailed example of cardinality mode  [cardinality explain](src/test/resources/docs/cardinality/EnglishCardinality.md).  
+Detailed example of modify mode [modify explain](src/test/resources/docs/modify/EnglishModify.md).  
+Cases where different modes are used in combination [combine explain](src/test/resources/docs/combine/EnglishCombine.md).  
