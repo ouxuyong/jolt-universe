@@ -4,7 +4,7 @@
 **Jolt是用Java编写的JSON到JSON转换库，可以将我们输入的一个json,转换成目标json.**    
 jolt官网地址传送门  [bazaarvoice/jolt](https://github.com/bazaarvoice/jolt).  
  
-本项目会持续更新，为大家带来更全、更好的jolt用法教程，如果大家有什么疑问，或者有什么需要转换json，可以在issues 中注明 input（输出），和Output（输出），
+本项目会持续更新，为大家带来更全、更好的jolt用法教程，如果大家有什么疑问，或者有什么需要转换json，可以在issues 中注明 input（输入），和Output（输出），
 大家可以一起探讨交流。  
 文中如有描述错误，请及时留言指出。如有转载，请标明出处。
 
