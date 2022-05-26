@@ -56,7 +56,7 @@ modify 模式包含如下函数：
         STOCK_FUNCTIONS.put( "sort", new Lists.sort() );
     }
 ```  
-其对应函数的功能和java同名函数一样
+其对应函数的功能和java同名函数一样  
 toLower ：将字符转成小写  
 toUpper ： 将字符转成大写  
 concat ：合并字符串  
