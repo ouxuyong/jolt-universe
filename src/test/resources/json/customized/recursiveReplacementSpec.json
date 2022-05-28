@@ -1,0 +1,16 @@
+[
+  {
+    "operation": "com.example.oxy.jolt.JoltCustomizedModifier$Overwrite",
+    "spec": {
+      "temp": "=recursiveReplacement(@1,'payload.conditionPredicates','conditions')"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "temp": {
+        "*": "&"
+      }
+    }
+  }
+]

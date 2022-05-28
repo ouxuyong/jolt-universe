@@ -1,0 +1,51 @@
+{
+  "type": "Condition.Aggregate.AND",
+  "payload": {
+    "conditionPredicates": [
+      {
+        "type": "Condition.Apple",
+        "payload": {
+          "fruit": "apple"
+        }
+      },
+      {
+        "type": "Condition.Aggregate.AND",
+        "payload": {
+          "conditionPredicates": [
+            {
+              "type": "Condition.Orange",
+              "payload": {
+                "fruit": "orange"
+              }
+            },{
+              "type": "Condition.Aggregate.AND",
+              "payload": {
+                "conditionPredicates": [
+                  {
+                    "type": "Condition.Apple",
+                    "payload": {
+                      "fruit": "apple"
+                    }
+                  },
+                  {
+                    "type": "Condition.Aggregate.AND",
+                    "payload": {
+                      "conditionPredicates": [
+                        {
+                          "type": "Condition.Orange",
+                          "payload": {
+                            "fruit": "orange"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
