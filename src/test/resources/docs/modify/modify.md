@@ -3,7 +3,14 @@ modify又分成如下模式：
 modify-overwrite-beta： 模式是对指定的key的数据进行操作，无法key是否存在或已存在值，始终会对其进行操作  
 default modify-default-beta ：当键值对应的值是null时写入  
 define modify-define-beta ：当键值不存在时写入  
-modify 模式包含如下函数：  
+1. [modify 模式包含如下函数](#a1)  
+2. [modify-overwrite-beta相关案例讲解](#a2)  
+- 2.1[字符串相关处理](#a2_1)  
+- 2.2[数学运算](#a2_2)  
+- 2.3[类型转换](#a2_3)  
+- 2.4[数组的操作](#a2_4)  
+
+## <a name="a1"></a> modify 模式包含如下函数：  
 ```text
     private static final Map<String, Function> STOCK_FUNCTIONS = new HashMap<>(  );
 
@@ -63,8 +70,8 @@ concat ：合并字符串
 下面就不一一说明了，下文会详细讲解各自的用法
 
 
-## modify-overwrite-beta相关案例讲解  
-#### 字符串相关处理
+## <a name="a2"></a>modify-overwrite-beta相关案例讲解  
+#### <a name="a2_1"></a>字符串相关处理
 input 输入:
 ```json
 {
@@ -131,7 +138,7 @@ expected 输出：
   }
 }
   ```  
-  #### 数学运算  
+  #### <a name="a2_2"></a>数学运算  
   input 输入:
 ```json
 {
@@ -195,7 +202,7 @@ expected 输出：
 }
 
   ```  
-  #### 类型转换  
+  #### <a name="a2_3"></a>类型转换  
  input 输入:
 ```json
 {
@@ -250,7 +257,7 @@ expected 输出：
 
   ```    
   
- #### 数组的操作  
+ #### <a name="a2_4"></a>数组的操作  
  
    input 输入:
 ```json
