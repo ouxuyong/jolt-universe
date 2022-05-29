@@ -55,5 +55,5 @@ modify 模式的详细例子[modify explain](src/test/resources/docs/modify/modi
 
 下面是我为jolt官网一个开发者解决的转换问题的自定义的实现类,这个问题的地址 [Self containing object - Recursively replace a field name](https://github.com/bazaarvoice/jolt/issues/1114)。他需要一个能够递归替换key的方法。  
 
-这是我为他创建的自定义实现类[JoltCustomizedFunction](src/main/com/example/oxy/jolt/JoltCustomizedFunction.java) 和 [JoltCustomizedModifier](src/main/com/example/oxy/jolt/JoltCustomizedModifier.java)  
+这是我为他创建的自定义实现类[JoltCustomizedModifier](src/main/java/com/example/oxy/jolt/JoltCustomizedModifier.java)和[JoltCustomizedFunction](src/main/java/com/example/oxy/jolt/JoltCustomizedFunction.java)     
 这里是测试的demo [CustomizedTest](src/test/com/example/oxy/customized/CustomizedTest.java)
