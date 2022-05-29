@@ -12,6 +12,7 @@ If there is an error in the description in the text, please leave a message in t
    1. [Online debugging tool](#demo)
    2. [getting Started](#getting_started)
    3. [Different modes and usage of jolt](#jolt_type)
+   4. [Custom jolt implementation class](#customize)
 
 
 
@@ -48,3 +49,13 @@ Detailed example of remove mode  [remove explain](src/test/resources/docs/remove
 Detailed example of cardinality mode  [cardinality explain](src/test/resources/docs/cardinality/EnglishCardinality.md).  
 Detailed example of modify mode [modify explain](src/test/resources/docs/modify/EnglishModify.md).  
 Cases where different modes are used in combination [combine explain](src/test/resources/docs/combine/EnglishCombine.md).  
+
+## <a name="customize"></a> Custom jolt implementation class  
+We need to customize a JoltCustomizedModifier class, which implements the SpecDriven and ContextualTransform interfaces. There is a Map in the JoltCustomizedModifier class to store our custom code.
+Here we also need to create a JoltCustomizedFunction class whose inner class is used to write our custom method.  
+
+The following is a custom implementation class for the conversion problem I solved for a developer on the jolt official website,address of this question [Self containing object - Recursively replace a field name](https://github.com/bazaarvoice/jolt/issues/1114)。
+He needs a way to recursively replace keys.  
+
+Here is the custom implementation class I created for him[JoltCustomizedModifier](src/main/java/com/example/oxy/jolt/JoltCustomizedModifier.java) and [JoltCustomizedFunction](src/main/java/com/example/oxy/jolt/JoltCustomizedFunction.java)     
+Here is the test demo [CustomizedTest](src/test/com/example/oxy/customized/CustomizedTest.java)
