@@ -58,4 +58,4 @@ The following is a custom implementation class for the conversion problem I solv
 He needs a way to recursively replace keys.  
 
 Here is the custom implementation class I created for him[JoltCustomizedModifier](src/main/java/com/example/oxy/jolt/JoltCustomizedModifier.java) and [JoltCustomizedFunction](src/main/java/com/example/oxy/jolt/JoltCustomizedFunction.java)     
-Here is the test demo [CustomizedTest](src/test/com/example/oxy/customized/CustomizedTest.java)
+Here is the test demo [CustomizedTest](src/test/java/com/example/oxy/customized/CustomizedTest.java)
