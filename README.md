@@ -13,6 +13,7 @@ jolt官网地址传送门  [bazaarvoice/jolt](https://github.com/bazaarvoice/jol
    1. [在线调试工具](#demo)
    2. [入门](#getting_started)
    3. [jolt的不同模式和用法](#jolt_type)
+   4. [自定义jolt实现类](#customize)
 
 
 
@@ -47,3 +48,12 @@ remove 模式的详细例子 [remove explain](src/test/resources/docs/remove/rem
 cardinality 模式的详细例子 [cardinality explain](src/test/resources/docs/cardinality/cardinality.md).  
 modify 模式的详细例子[modify explain](src/test/resources/docs/modify/modify.md).  
 不同模式结合使用的案例[combine explain](src/test/resources/docs/combine/combine.md).  
+
+## <a name="customize"></a> 自定义jolt实现类  
+我们需要自定义一个JoltCustomizedModifier类，此类要实现 SpecDriven和 ContextualTransform 接口，在JoltCustomizedModifier类中存在一个Map,用于存储我们自定义的代码，
+这里我们还需要创建一个JoltCustomizedFunction类，它的内部类用于编写我们的自定义方法。  
+
+下面是我为jolt官网一个开发者解决的转换问题的自定义的实现类,这个问题的地址 [Self containing object - Recursively replace a field name](https://github.com/bazaarvoice/jolt/issues/1114)。他需要一个能够递归替换key的方法。  
+
+这是我为他创建的自定义实现类[JoltCustomizedFunction](src/main/com/example/oxy/jolt/JoltCustomizedFunction.java) 和 [JoltCustomizedModifier](src/main/com/example/oxy/jolt/JoltCustomizedModifier.java)  
+这里是测试的demo [CustomizedTest](src/test/com/example/oxy/customized/CustomizedTest.java)
