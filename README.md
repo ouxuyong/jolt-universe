@@ -57,7 +57,7 @@ modify 模式的详细例子[modify explain](src/test/resources/docs/modify/modi
 
 这是我为他创建的自定义实现类[JoltCustomizedModifier](src/main/java/com/example/oxy/jolt/JoltCustomizedModifier.java)和[JoltCustomizedFunction](src/main/java/com/example/oxy/jolt/JoltCustomizedFunction.java)     
 这里是测试的demo [CustomizedTest](src/test/java/com/example/oxy/customized/CustomizedTest.java)   
-自定义jolt 实现类，只需要将‘operation’ 改成你 JoltCustomizedModifier 类的路径即可  
+要使用自定义jolt 实现类，只需要将‘operation’ 改成你 JoltCustomizedModifier 类的路径即可  
 input: 
 ```json
 {
