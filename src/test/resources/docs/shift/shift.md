@@ -527,9 +527,9 @@ spec：
       "rating": {
         "@primary": "yyy", //将@primary等价于@(0,primary)，代表的是将 primary 的值赋值给yyy
         "@quality": "aaa", //将@primary等价于@(0,quality)，代表的是将 quality 的值赋值给aaa
-        "@(1,xxx)": "bbb", //@(1,xxx) 的1代表和rating平级的xxx 的值赋值给 bbb
+        "@(1,xxx)": "bbb", //@(1,xxx) 的1代表和rating同一个等级的xxx 的值赋值给 bbb
         "primary": {
-          "@(2,xxx)": "ccc" //@(2,xxx)的2是指往上数2级的也就是和rating平级的xxx的值赋值给ccc
+          "@(2,xxx)": "ccc" //@(2,xxx)的2是'primary'指往上数2个等级的也就是和rating同一等级的xxx的值赋值给ccc
         }
       }
     }
