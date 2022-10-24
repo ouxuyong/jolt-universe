@@ -27,6 +27,7 @@ public class JoltCustomizedModifier implements SpecDriven, ContextualTransform {
 
     static {
         STOCK_FUNCTIONS.put("recursiveReplacement", new JoltCustomizedFunction.RecursiveReplacementFunc());
+        STOCK_FUNCTIONS.put("recursiveOperation", new JoltCustomizedFunction.RecursiveOperationFunc());
     }
 
     private JoltCustomizedModifier(Object spec, OpMode opMode, Map<String, Function> functionsMap) {

@@ -15,4 +15,18 @@ public class CustomizedTest {
         Object transform = chainr.transform(input);
         System.out.println(JsonUtils.toJsonString(transform));
     }
+
+    /**
+     * Support for recursive parent-child trees #1172
+     */
+    @Test
+    public void recursiveReplacement_2(){
+        Object input = JsonUtils.classpathToObject("/json/customized/recursiveReplacementInput_2.json");
+        List spec = JsonUtils.classpathToList("/json/customized/recursiveReplacementSpec_2.json");
+        Chainr chainr = Chainr.fromSpec(spec);
+        Object transform = chainr.transform(input);
+        System.out.println(JsonUtils.toJsonString(transform));
+
+
+    }
 }

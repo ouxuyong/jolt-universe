@@ -1,0 +1,45 @@
+{
+  "Name": "Mike",
+  "Age": 50,
+  "Hobbies": [
+    {
+      "id": 2,
+      "name": "painting"
+    }
+  ],
+  "Children": [
+    {
+      "Name": "MikeSon",
+      "Age": 30,
+      "Hobbies": [
+        {
+          "id": 1,
+          "name": "painting"
+        } ,
+        {
+          "id": 2,
+          "name": "squash"
+        }
+      ],
+      "Children": [
+        {
+          "Name": "MikeGrandSon",
+          "Age": 10,
+          "Hobbies": [],
+          "Children": []
+        },
+        {
+          "Name": "MikeGrandDaughter",
+          "Age": 5,
+          "Hobbies" : [
+            {
+              "id": 3,
+              "name": "playing"
+            }
+          ],
+          "Children": []
+        }
+      ]
+    }
+  ]
+}

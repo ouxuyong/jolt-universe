@@ -1,0 +1,20 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "Name": "FirstName",
+      "Age": "Age",
+      "Hobbies": {
+        "*": {
+          "name": "Hobbies"
+        }
+      },
+      "Children": "Children"
+    }
+  },{
+  "operation": "com.example.oxy.jolt.JoltCustomizedModifier$Overwrite",
+  "spec": {
+    "Children": "=recursiveOperation(@(1,Children),Children,Name->FirstName,=concat(Hobbies.name->Hobbies))"
+  }
+}
+]
