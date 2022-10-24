@@ -3,6 +3,7 @@
 2. [shift模式中‘&’和‘*'的简单使用](#a2)  
 3. [shift模式中数组的转换和 ‘#’的使用](#a3)  
 4. [shift模式中 ‘$’的使用](#a4)  
+5. [shift模式中 ‘@’的使用](#a5)  
 
 **shift 模式的作用的将一个input 的json 转成 expected的json,只改变数据结构，不对数据进行操作**
 #### <a name="a1"></a>简单的格式转换
@@ -469,6 +470,111 @@ spec：
     "Id" : "quality"
   }
 }
-```
+```  
 
+#### <a name="a5"></a>shift模式中 ‘@’的使用
+'@' LHS、RHS都有效，意义一样,可以取到数据树中指定的值,单独写@时是等价于@0的，下面我们有具体的例子来讲解  
+input 输入:  
+```json
+{
+  "rating": {
+    "primary": 111,
+    "quality": 222
+  },
+  "xxx": 4444
+}
+```    
+spec：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "rating": {
+        "@": "yyy"  //将@等价于@0，代表的是将 rating 的值赋值给yyy
+      }
+    }
+  }
+]
+
+```  
+输出：  
+```json
+{
+  "yyy" : {
+    "primary" : 111,
+    "quality" : 222
+  }
+}
+```   
+
+input 输入:  
+```json
+{
+  "rating": {
+    "primary": 111,
+    "quality": 222
+  },
+  "xxx": 4444
+}
+```   
+spec：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "rating": {
+        "@primary": "yyy", //将@primary等价于@(0,primary)，代表的是将 primary 的值赋值给yyy
+        "@quality": "aaa", //将@primary等价于@(0,quality)，代表的是将 quality 的值赋值给aaa
+        "@(1,xxx)": "bbb", //@(1,xxx) 的1代表和rating同一个等级的xxx 的值赋值给 bbb
+        "primary": {
+          "@(2,xxx)": "ccc" //@(2,xxx)的2是'primary'指往上数2个等级的也就是和rating同一等级的xxx的值赋值给ccc
+        }
+      }
+    }
+  }
+]
+
+```  
+输出：  
+```json
+{
+  "yyy" : 111,
+  "aaa" : 222,
+  "bbb" : 4444,
+  "ccc" : 4444
+}
+```  
+'@'在RHS的使用例子 
+
+input 输入:  
+```json
+{
+  "rating": {
+    "primary": "orderKey",
+    "quality": "order"
+  }
+}
+```   
+spec：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "rating": {
+        "@primary": "@quality" //将rating.primary的值赋值给 order，order是rating.quality的值
+      }
+    }
+  }
+]
+
+```   
+输出：  
+```json
+{
+  "order" : "orderKey"
+}
+```  
 

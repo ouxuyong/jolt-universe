@@ -58,4 +58,82 @@ The following is a custom implementation class for the conversion problem I solv
 He needs a way to recursively replace keys.  
 
 Here is the custom implementation class I created for him[JoltCustomizedModifier](src/main/java/com/example/oxy/jolt/JoltCustomizedModifier.java) and [JoltCustomizedFunction](src/main/java/com/example/oxy/jolt/JoltCustomizedFunction.java)     
-Here is the test demo [CustomizedTest](src/test/java/com/example/oxy/customized/CustomizedTest.java)
+Here is the test demo [CustomizedTest](src/test/java/com/example/oxy/customized/CustomizedTest.java)  
+To use a custom jolt implementation class, just change 'operation' to the path of your JoltCustomizedModifier class   
+input: 
+```json
+{
+  "type": "Condition.Aggregate.AND",
+  "payload": {
+    "conditionPredicates": [
+      {
+        "type": "Condition.Apple",
+        "payload": {
+          "fruit": "apple"
+        }
+      },
+      {
+        "type": "Condition.Aggregate.AND",
+        "payload": {
+          "conditionPredicates": [
+            {
+              "type": "Condition.Orange",
+              "payload": {
+                "fruit": "orange"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```   
+spec: 
+```json
+[
+  {
+    "operation": "com.example.oxy.jolt.JoltCustomizedModifier$Overwrite",
+    "spec": {
+      "temp": "=recursiveReplacement(@1,'payload.conditionPredicates','conditions')"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "temp": {
+        "*": "&"
+      }
+    }
+  }
+]
+```  
+output: 
+```json
+{
+  "type": "Condition.Aggregate.AND",
+  "payload": {
+    "conditions": [
+      {
+        "type": "Condition.Apple",
+        "payload": {
+          "fruit": "apple"
+        }
+      },
+      {
+        "type": "Condition.Aggregate.AND",
+        "payload": {
+          "conditions": [
+            {
+              "type": "Condition.Orange",
+              "payload": {
+                "fruit": "orange"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```

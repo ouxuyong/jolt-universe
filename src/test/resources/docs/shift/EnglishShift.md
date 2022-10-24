@@ -3,6 +3,7 @@
 2. [Simple use of '&' and '*' in shift mode](#a2)  
 3. [Array transformation and use of '#' in shift mode](#a3)  
 4. [Use of '$' in shift mode](#a4)  
+5. [Use of '@' in shift mode](#a5)  
 
 **The function of the shift mode is to convert an input json into an expected json, only changing the data structure and not operating the data**
 #### <a name="a1"></a>Simple format conversion
@@ -470,5 +471,110 @@ output：
   }
 }
 ```
+#### <a name="a5"></a>Use of '@' in shift mode
 
+'@' LHS and RHS are both valid and have the same meaning. You can get the value specified in the data tree. When you write @ alone, it is equivalent to @0. Below we have specific examples to explain   
+input :  
+```json
+{
+  "rating": {
+    "primary": 111,
+    "quality": 222
+  },
+  "xxx": 4444
+}
+```    
+spec：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "rating": {
+        "@": "yyy"  //Equating @ to @0 means assigning the value of 'rating' to yyy
+      }
+    }
+  }
+]
+
+```  
+output：  
+```json
+{
+  "yyy" : {
+    "primary" : 111,
+    "quality" : 222
+  }
+}
+```   
+
+input :  
+```json
+{
+  "rating": {
+    "primary": 111,
+    "quality": 222
+  },
+  "xxx": 4444
+}
+```   
+spec：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "rating": {
+        "@primary": "yyy", //Equivalent @primary to @(0,primary), which means assigning the value of 'primary' to yyy
+        "@quality": "aaa", //Equivalent @primary to @(0,quality), which means assigning the value of 'quality' to aaa
+        "@(1,xxx)": "bbb", //1 of @(1,xxx) means that the value of xxx of the same level as rating is assigned to bbb
+        "primary": {
+          "@(2,xxx)": "ccc" //The 2 of @(2,xxx) is 'primary', which refers to two levels up, that is, the value of xxx at the same level as rating is assigned to ccc
+        }
+      }
+    }
+  }
+]
+
+```  
+output：  
+```json
+{
+  "yyy" : 111,
+  "aaa" : 222,
+  "bbb" : 4444,
+  "ccc" : 4444
+}
+```  
+Example of the use of '@' in RHS  
+
+input :  
+```json
+{
+  "rating": {
+    "primary": "orderKey",
+    "quality": "order"
+  }
+}
+```   
+spec：  
+```json
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "rating": {
+        "@primary": "@quality" //Assign the value of 'rating.primary' to 'order', where 'order' is the value of 'rating.quality'
+      }
+    }
+  }
+]
+
+```   
+output：  
+```json
+{
+  "order" : "orderKey"
+}
+```  
 
